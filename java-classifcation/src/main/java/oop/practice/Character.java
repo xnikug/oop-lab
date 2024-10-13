@@ -1,17 +1,12 @@
+/*Class used to store the Character */
 package oop.practice;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Character {
-    @JsonProperty("id")
     private int id;
-    @JsonProperty("isHumanoid")
-    private boolean isHumanoid;
-    @JsonProperty("planet")
+    private Boolean isHumanoid;
     private String planet;
-    @JsonProperty("age")
-    private int age;
-    @JsonProperty("traits")
+    private int age = -1;
     private String[] traits;
     public Character() {
 
@@ -47,14 +42,25 @@ public class Character {
 
     public void displayCreatureInfo() {
         System.out.println("ID: " + id);
-        System.out.println("Humanoid: " + isHumanoid);
-        System.out.println("Planet: " + planet);
-        System.out.println("Age: " + age);
+        if (isHumanoid != null){
+            System.out.println("Humanoid: " + isHumanoid);
+        }
+        if (planet != null){
+            System.out.println("Planet: " + planet);
+        }
+        if (age != -1){
+            System.out.println("Age: " + age);
+        }
+        if (traits == null){
+            System.out.println("--------------------");
+            return;
+        }
         System.out.print("Traits: ");
         for (String trait : traits) {
             System.out.print(trait + "; ");
         }
         System.out.println();
+        System.out.println("--------------------");
     }
 }
 
