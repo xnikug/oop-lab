@@ -20,20 +20,24 @@ public class DataWrapper {
     }
 
 
-    public Character fetchById(int ID){
+    public List<Character> fetchById(int ID){
+        List<Character> CharacterListBuffer = new ArrayList<>();
         for (Character c : data){
             if (c.getId() == ID){
-                return c;
+                CharacterListBuffer.add(c);
+                return CharacterListBuffer;
             }
         }
-        return null;
+        return CharacterListBuffer;
     }
-    // Fetch all Human/Non-human and unkown characters (use null value in params)
-    public List<Character> fetchByHumanoidCharacter(Boolean isHumanoid){
+    // Fetch all Humanoids
+    public List<Character> fetchByHumanoidCharacter(){
         List<Character> CharacterListBuffer = new ArrayList<>();
-
         for (Character c : data){
-            if (c.isHumanoid() == isHumanoid){
+            if (c.isHumanoid() == null){
+                continue;
+            }
+            if (c.isHumanoid()){
                 CharacterListBuffer.add(c);
             }
         }
@@ -44,7 +48,10 @@ public class DataWrapper {
         List<Character> CharacterListBuffer = new ArrayList<>();
 
         for (Character c : data){
-            if (c.getAge()== age){
+            if (c.getAge() == -1){
+                continue;
+            }
+            if (c.getAge() == age){
                 CharacterListBuffer.add(c);
             }
         }
@@ -75,9 +82,12 @@ public class DataWrapper {
         List<Character> characterListBuffer = new ArrayList<>();
 
         for (Character c : data) {
+            if (c.getTraits() == null){
+                continue;
+            }
             // Check if any of the traits match
             for (String trait : traits) {
-                if (Arrays.asList(c.getTraits()).contains(trait)) {
+                if (Arrays.asList(c.getTraits()).contains(trait.toUpperCase())) {
                     characterListBuffer.add(c);
                     break;
                 }
@@ -90,6 +100,9 @@ public class DataWrapper {
         List<Character> characterListBuffer = new ArrayList<>();
 
         for (Character c : data) {
+            if (c.getPlanet() == null){
+                continue;
+            }
             if (c.getPlanet().toLowerCase().equals(planet.toLowerCase())){
                 characterListBuffer.add(c);
             }

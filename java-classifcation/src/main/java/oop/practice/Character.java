@@ -7,6 +7,7 @@ public class Character {
     private Boolean isHumanoid;
     private String planet;
     private int age = -1;
+    // Traits to be defined by upper case strictly
     private String[] traits;
     public Character() {
 
@@ -24,7 +25,7 @@ public class Character {
         return id;
     }
 
-    public boolean isHumanoid() {
+    public Boolean isHumanoid() {
         return isHumanoid;
     }
 
