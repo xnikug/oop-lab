@@ -1,11 +1,21 @@
-package oop;
+package oop.practice;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Character {
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("isHumanoid")
     private boolean isHumanoid;
+    @JsonProperty("planet")
     private String planet;
+    @JsonProperty("age")
     private int age;
+    @JsonProperty("traits")
     private String[] traits;
+    public Character() {
+
+    }
 
     public Character(int id, boolean isHumanoid, String planet, int age, String[] traits) {
         this.id = id;
