@@ -110,4 +110,88 @@ public class DataWrapper {
 
         return characterListBuffer;
     }
+    // Fetch by Wookie species (Star Wars Universe)
+    public List<Character> fetchByWookie() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ( (c.isHumanoid()==null || !c.isHumanoid()) && ("Kashyyk".equalsIgnoreCase(c.getPlanet()) || c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 400 && 
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("HAIRY") || Arrays.asList(c.getTraits()).contains("TALL"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Ewok species (Star Wars Universe)
+    public List<Character> fetchByEwok() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || !c.isHumanoid()) && ("Endor".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 60 && 
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("SHORT") || Arrays.asList(c.getTraits()).contains("HAIRY"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Asgardian species (Marvel Universe)
+    public List<Character> fetchByAsgardian() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Asgard".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 5000 && 
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("BLONDE") || Arrays.asList(c.getTraits()).contains("TALL"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Betelgeusian species (Hitchhiker's Guide Universe)
+    public List<Character> fetchByBetelgeusian() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Betelgeuse".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 100 &&
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("EXTRA_ARMS") || Arrays.asList(c.getTraits()).contains("EXTRA_HEAD"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Vogon species (Hitchhiker's Guide Universe)
+    public List<Character> fetchByVogon() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || !c.isHumanoid()) && ("Vogsphere".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 200 && 
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("GREEN") || Arrays.asList(c.getTraits()).contains("BULKY"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Elf species (Lord of the Rings Universe)
+    public List<Character> fetchByElf() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Earth".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && (Arrays.asList(c.getTraits()) == null || 
+                Arrays.asList(c.getTraits()).contains("BLONDE") || Arrays.asList(c.getTraits()).contains("POINTY_EARS"))) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
+    // Fetch by Dwarf species (Lord of the Rings Universe)
+    public List<Character> fetchByDwarf() {
+        List<Character> characterListBuffer = new ArrayList<>();
+        for (Character c : data) {
+            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Earth".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 200 && 
+                c.getTraits() == null || Arrays.asList(c.getTraits()).contains("SHORT") || Arrays.asList(c.getTraits()).contains("BULKY")) {
+                characterListBuffer.add(c);
+            }
+        }
+        return characterListBuffer;
+    }
+
 }

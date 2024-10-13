@@ -27,7 +27,7 @@ public class Main {
         DataWrapper output = new DataWrapper();
         output.setData(view.getOutput());
         String jsonOutput = gson.toJson(output);
-
+        
         // Write into the output.json file
         System.out.println("The JSON format output:");
         System.out.println(jsonOutput);
@@ -36,6 +36,16 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Write the classified data
+        DataWrapper outputWookie = new DataWrapper();
+        outputWookie.setData(dataC.fetchByWookie());
+        String jsonOutputWokie = gson.toJson(outputWookie);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputWokie.json"))) {
+            writer.write(jsonOutputWokie);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //...
         System.out.println("Program ended");
     }
 }
