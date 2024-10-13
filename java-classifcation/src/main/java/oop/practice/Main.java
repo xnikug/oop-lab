@@ -37,11 +37,54 @@ public class Main {
             e.printStackTrace();
         }
         // Write the classified data
+        String StarWars;
         DataWrapper outputWookie = new DataWrapper();
         outputWookie.setData(dataC.fetchByWookie());
         String jsonOutputWokie = gson.toJson(outputWookie);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputWokie.json"))) {
-            writer.write(jsonOutputWokie);
+        DataWrapper outputEwok = new DataWrapper();
+        outputEwok.setData(dataC.fetchByEwok());
+        String jsonOutputEwok = gson.toJson(outputEwok);
+        StarWars = "[" + jsonOutputWokie +","+ jsonOutputEwok + "]";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonStarWars.json"))) {
+            writer.write(StarWars);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String Marvel;
+        DataWrapper outputAsgardian = new DataWrapper();
+        outputAsgardian.setData(dataC.fetchByAsgardian());
+        String jsonOutputAsgardian = gson.toJson(outputAsgardian);
+        Marvel = "[" + jsonOutputAsgardian + "]";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputMarvel.json"))) {
+            writer.write(Marvel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String Hitchhiker;
+        DataWrapper outputVogon = new DataWrapper();
+        outputVogon.setData(dataC.fetchByVogon());
+        String jsonOutputVogon = gson.toJson(outputVogon);
+        DataWrapper outputBetelgeusian = new DataWrapper();
+        outputBetelgeusian.setData(dataC.fetchByBetelgeusian());
+        String jsonOutputBetelgeusian = gson.toJson(outputBetelgeusian);
+        Hitchhiker = "[" + jsonOutputVogon + ";" + jsonOutputBetelgeusian + "]";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputHitchhiker.json"))) {
+            writer.write(Hitchhiker);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String LordRings;
+        DataWrapper outputElf = new DataWrapper();
+        outputElf.setData(dataC.fetchByElf());
+        String jsonOutputElf = gson.toJson(outputElf);
+        DataWrapper outputDwarf = new DataWrapper();
+        outputDwarf.setData(dataC.fetchByDwarf());
+        String jsonOutputDwarf = gson.toJson(outputDwarf);
+        LordRings = "[" + jsonOutputElf +","+ jsonOutputDwarf+"]";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputLordRings.json"))) {
+            writer.write(LordRings);
         } catch (IOException e) {
             e.printStackTrace();
         }

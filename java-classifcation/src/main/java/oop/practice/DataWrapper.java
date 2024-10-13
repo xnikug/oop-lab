@@ -174,7 +174,7 @@ public class DataWrapper {
     public List<Character> fetchByElf() {
         List<Character> characterListBuffer = new ArrayList<>();
         for (Character c : data) {
-            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Earth".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && (Arrays.asList(c.getTraits()) == null || 
+            if ((c.isHumanoid()==null || c.isHumanoid()) && ("Earth".equalsIgnoreCase(c.getPlanet()) || c.getPlanet() == null) && (c.getTraits() == null || 
                 Arrays.asList(c.getTraits()).contains("BLONDE") || Arrays.asList(c.getTraits()).contains("POINTY_EARS"))) {
                 characterListBuffer.add(c);
             }
@@ -187,7 +187,7 @@ public class DataWrapper {
         List<Character> characterListBuffer = new ArrayList<>();
         for (Character c : data) {
             if ((c.isHumanoid()==null || c.isHumanoid()) && ("Earth".equalsIgnoreCase(c.getPlanet())|| c.getPlanet() == null) && c.getAge() >= 0 && c.getAge() <= 200 && 
-                c.getTraits() == null || Arrays.asList(c.getTraits()).contains("SHORT") || Arrays.asList(c.getTraits()).contains("BULKY")) {
+                (c.getTraits() == null || Arrays.asList(c.getTraits()).contains("SHORT") || Arrays.asList(c.getTraits()).contains("BULKY"))) {
                 characterListBuffer.add(c);
             }
         }
