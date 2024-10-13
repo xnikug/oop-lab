@@ -69,7 +69,7 @@ public class Main {
         DataWrapper outputBetelgeusian = new DataWrapper();
         outputBetelgeusian.setData(dataC.fetchByBetelgeusian());
         String jsonOutputBetelgeusian = gson.toJson(outputBetelgeusian);
-        Hitchhiker = "[" + jsonOutputVogon + ";" + jsonOutputBetelgeusian + "]";
+        Hitchhiker = "[" + jsonOutputVogon + "," + jsonOutputBetelgeusian + "]";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputHitchhiker.json"))) {
             writer.write(Hitchhiker);
         } catch (IOException e) {
