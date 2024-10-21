@@ -14,4 +14,3 @@ This project has the main purpose of managing and classifying character data fro
   - By planet (case insensitive)
 - Display character information.
 
-The project is on the oop-intro-classification-system branch
