@@ -6,7 +6,7 @@ public class Character {
     private int id;
     private Boolean isHumanoid;
     private String planet;
-    private int age = -1;
+    private Integer age ;
     // Traits to be defined by upper case strictly
     private String[] traits;
     public Character() {
@@ -49,7 +49,7 @@ public class Character {
         if (planet != null){
             System.out.println("Planet: " + planet);
         }
-        if (age != -1){
+        if (age != null){
             System.out.println("Age: " + age);
         }
         if (traits == null){
