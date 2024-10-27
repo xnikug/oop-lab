@@ -20,6 +20,9 @@ public class Assistant {
     public void setAssistantName(String assistantName){
         this.assistantName = assistantName;
     }
+    public List<Display> getAssignedDisplays(){
+        return assignedDisplays;
+    }
 
     // Adds a Display to the assignedDisplays list
     public void assignDisplay(Display d) {
@@ -32,14 +35,16 @@ public class Assistant {
             System.out.println("No displays are assigned to assist.");
             return;
         }
-
+        if (assignedDisplays.size() == 1) {
+            System.out.println("There is only one display assigned to assist.");
+            return;
+        }
         System.out.println("Assistant " + assistantName + " is helping with display comparisons:");
         for (int i = 0; i < assignedDisplays.size() - 1; i++) {
             Display currentDisplay = assignedDisplays.get(i);
             for (int j = i; j < assignedDisplays.size() - 1; j++) {
                 Display nextDisplay = assignedDisplays.get(j + 1);
 
-                System.out.println("Comparing " + currentDisplay.getModel()+ " (Display " + (i) + ") and " + currentDisplay.getModel() + "  (Display " + (j + 1) + "):");
                 currentDisplay.compareWithMonitor(nextDisplay);
                 System.out.println("-------------------------");
             }
