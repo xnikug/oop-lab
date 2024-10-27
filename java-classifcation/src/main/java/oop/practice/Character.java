@@ -33,7 +33,7 @@ public class Character {
         return planet;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

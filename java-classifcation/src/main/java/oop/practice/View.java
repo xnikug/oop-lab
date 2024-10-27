@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class View {
     private List<Character> output;
-    View (DataWrapper dataC){
+    View (CharacterWrapper dataC){
         output = dataC.getData();
     }
     public List<Character> getOutput(){
@@ -24,12 +24,11 @@ public class View {
         System.out.println("5. Fetch by Odd ID");
         System.out.println("6. Fetch by Traits");
         System.out.println("7. Fetch by Planet");
-        System.out.println("8. Write data");
-        System.out.println("9. Exit");
+        System.out.println("8. Exit");
         System.out.print("Enter your choice: ");
     }
     // Run the query for the whole data set
-    public void runQuery(DataWrapper dataC){
+    public void runQuery(CharacterWrapper dataC){
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
@@ -130,8 +129,7 @@ public class View {
                         c.displayCreatureInfo();
                     }
                     break;
-
-                case 9: // Exit
+                case 8: // Exit
                     System.out.println("Exiting...");
                     break;
 
@@ -139,7 +137,7 @@ public class View {
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
-        } while (choice != 9);
+        } while (choice != 8);
         scanner.close();
     }
 }

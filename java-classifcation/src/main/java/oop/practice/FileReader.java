@@ -11,43 +11,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileReader {
-    private String jsonString;
-    private List<String> individualJsons; // List to store individual JSON objects as strings
 
     // Method to read a JSON file and store it into a string
-    public void readJsonFile(String filePath) {
+    public String readJsonFile(String filePath) throws IOException {
         try {
-            this.jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
+            return new String(Files.readAllBytes(Paths.get(filePath)));
         } catch (IOException e) {
             e.printStackTrace();
+            throw new IOException("");
         }
     }
 
     // Method to parse the JSON string and extract individual JSON objects
-    public void splitJsonIntoObjects() {
+    public List<String> splitJsonIntoObjects(String jsonString) {
+        List<String> individualJsons = new ArrayList<>(); // List to store individual JSON objects as strings
+
         if (jsonString != null && !jsonString.isEmpty()) {
-            individualJsons = new ArrayList<>();
 
             jsonString = jsonString.trim();
             if (jsonString.startsWith("[") && jsonString.endsWith("]")) {
                 jsonString = jsonString.substring(1, jsonString.length() - 1).trim();
-                //System.out.println("here is the json2: " + jsonString);
+                // System.out.println("here is the json2: " + jsonString);
                 String[] jsonObjects = jsonString.split("(?<=\\}),");
 
                 for (String jsonObject : jsonObjects) {
                     individualJsons.add(jsonObject.trim());
                 }
-            }else if (jsonString.startsWith("{") && jsonString.endsWith("}")){
+            } else if (jsonString.startsWith("{") && jsonString.endsWith("}")) {
                 // Assuming that it is a singular JSON Object!
                 individualJsons.add(jsonString);
             }
         } else {
             System.out.println("No JSON data loaded.");
         }
+
+        return individualJsons;
     }
 
     // Method to print all individual JSON objects
-    public void printIndividualJsons() {
+    public void printIndividualJsons(List<String> individualJsons) {
         if (individualJsons != null && !individualJsons.isEmpty()) {
             for (String json : individualJsons) {
                 System.out.println(json);
@@ -56,10 +58,5 @@ public class FileReader {
         } else {
             System.out.println("No individual JSON objects to display.");
         }
-    }
-
-    // Getter method for the array of individual JSON strings
-    public List<String> getIndividualJsons() {
-        return individualJsons;
     }
 }

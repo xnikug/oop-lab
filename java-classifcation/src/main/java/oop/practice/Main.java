@@ -7,24 +7,26 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FileReader filer = new FileReader();
         // Read the input.json file
-        filer.readJsonFile("java-classifcation/src/main/resources/input.json");
-        filer.splitJsonIntoObjects();
+        String jsonField = filer.readJsonFile("java-classifcation/src/main/resources/input.json");
+        List<String> splitJsonFields = filer.splitJsonIntoObjects(jsonField);
         // Print out the string file
-        String dataString = filer.getIndividualJsons().getFirst();
+        String dataString = splitJsonFields.getFirst();
         // Convert String Data to object
         GsonBuilder builder = new GsonBuilder(); 
         Gson gson = builder.create(); 
-        DataWrapper dataC = gson.fromJson(dataString, DataWrapper.class);
+        CharacterWrapper characterData = gson.fromJson(dataString, CharacterWrapper.class);
 
         // Setup a query to request data by classification
-        View view = new View(dataC);
-        view.runQuery(dataC);
+        View view = new View(characterData);
+        view.runQuery(characterData);
         // Get the output and convert it to json format
-        DataWrapper output = new DataWrapper();
+        CharacterWrapper output = new CharacterWrapper();
         output.setData(view.getOutput());
         String jsonOutput = gson.toJson(output);
         
@@ -38,11 +40,11 @@ public class Main {
         }
         // Write the classified data
         String StarWars;
-        DataWrapper outputWookie = new DataWrapper();
-        outputWookie.setData(dataC.fetchByWookie());
+        CharacterWrapper outputWookie = new CharacterWrapper();
+        outputWookie.setData(characterData.fetchByWookie());
         String jsonOutputWokie = gson.toJson(outputWookie);
-        DataWrapper outputEwok = new DataWrapper();
-        outputEwok.setData(dataC.fetchByEwok());
+        CharacterWrapper outputEwok = new CharacterWrapper();
+        outputEwok.setData(characterData.fetchByEwok());
         String jsonOutputEwok = gson.toJson(outputEwok);
         StarWars = "[" + jsonOutputWokie +","+ jsonOutputEwok + "]";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonStarWars.json"))) {
@@ -52,8 +54,8 @@ public class Main {
         }
 
         String Marvel;
-        DataWrapper outputAsgardian = new DataWrapper();
-        outputAsgardian.setData(dataC.fetchByAsgardian());
+        CharacterWrapper outputAsgardian = new CharacterWrapper();
+        outputAsgardian.setData(characterData.fetchByAsgardian());
         String jsonOutputAsgardian = gson.toJson(outputAsgardian);
         Marvel = "[" + jsonOutputAsgardian + "]";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputMarvel.json"))) {
@@ -63,11 +65,11 @@ public class Main {
         }
 
         String Hitchhiker;
-        DataWrapper outputVogon = new DataWrapper();
-        outputVogon.setData(dataC.fetchByVogon());
+        CharacterWrapper outputVogon = new CharacterWrapper();
+        outputVogon.setData(characterData.fetchByVogon());
         String jsonOutputVogon = gson.toJson(outputVogon);
-        DataWrapper outputBetelgeusian = new DataWrapper();
-        outputBetelgeusian.setData(dataC.fetchByBetelgeusian());
+        CharacterWrapper outputBetelgeusian = new CharacterWrapper();
+        outputBetelgeusian.setData(characterData.fetchByBetelgeusian());
         String jsonOutputBetelgeusian = gson.toJson(outputBetelgeusian);
         Hitchhiker = "[" + jsonOutputVogon + "," + jsonOutputBetelgeusian + "]";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputHitchhiker.json"))) {
@@ -76,11 +78,11 @@ public class Main {
             e.printStackTrace();
         }
         String LordRings;
-        DataWrapper outputElf = new DataWrapper();
-        outputElf.setData(dataC.fetchByElf());
+        CharacterWrapper outputElf = new CharacterWrapper();
+        outputElf.setData(characterData.fetchByElf());
         String jsonOutputElf = gson.toJson(outputElf);
-        DataWrapper outputDwarf = new DataWrapper();
-        outputDwarf.setData(dataC.fetchByDwarf());
+        CharacterWrapper outputDwarf = new CharacterWrapper();
+        outputDwarf.setData(characterData.fetchByDwarf());
         String jsonOutputDwarf = gson.toJson(outputDwarf);
         LordRings = "[" + jsonOutputElf +","+ jsonOutputDwarf+"]";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("java-classifcation/src/main/resources/jsonOutputLordRings.json"))) {
