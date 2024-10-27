@@ -2,6 +2,7 @@
 
 package oop.intermediate.text_parsing;
 
+import java.io.IOException;
 
 public class TextData {
     private String fileName;
@@ -13,7 +14,7 @@ public class TextData {
     private String longestWord;
 
     // Constructor
-    public TextData(String fileName) {
+    public TextData(String fileName) throws IOException {
         this.fileName = fileName;
         // Call the FileReader instance anonymously
         this.text = new FileReader().readFileIntoString(fileName);
@@ -49,7 +50,11 @@ public class TextData {
         return longestWord;
     }
 
-    private void processText() {
+    private void processText() throws IOException {
+        if (this.text == null)
+        {
+            throw new IOException("Invalid file path");
+        }
 
         this.numberOfVowels = 0;
         this.numberOfConsonants = 0;
@@ -62,22 +67,20 @@ public class TextData {
         }
 
         String[] words = text.split("[\\s.,!?;]+");
-        for (String word : words){
-            System.out.println(word);
-        }
-        String vowels = "AEIOUaeiou";
+        String vowels = "aeiou";
+        String consonants = "bcdfghjklmnpqrstvwxyz";
 
         for (String word : words) {
             if (word.length() > (longestWord == null ? 0 : longestWord.length())) {
                 longestWord = word;
             }
 
-            for (char c : word.toCharArray()) {
+            for (char c : word.toLowerCase().toCharArray()) {
                 if (Character.isLetter(c)) {
                     numberOfLetters++;
                     if (vowels.indexOf(c) != -1) {
                         numberOfVowels++;
-                    } else {
+                    } else if (consonants.indexOf(c) != -1){
                         numberOfConsonants++;
                     }
                 }
