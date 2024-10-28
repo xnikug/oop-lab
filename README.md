@@ -2,6 +2,16 @@
 
 This lab focuses on object-oriented programming (OOP) principles using Java. Examples include to create a display management application, and to handle text data from files.
 
+## Features
+
+-`Display Class`: Represents individual display monitors with properties such as width, height, pixels per inch (PPI), and model. It includes methods for comparing size and sharpness between displays.
+
+-`Assistant Class`: Acts as a manager for multiple display objects, enabling the assignment of displays and facilitating comparisons between them. It also provides functionality to "purchase" a display by removing it from the list.
+
+-`FileReader Functionality`: A separate class is utilized to read data from text files, allowing users to import display specifications from an external source. This feature demonstrates how to handle file input in Java and process the data for creating display objects.
+
+-`User Interaction`: A menu-driven interface allows users to create displays, assign them to the assistant, and compare their specifications. This interaction illustrates how OOP concepts like encapsulation and modularity can enhance code organization and reusability.
+
 ## Class Overview
 
 ### 1. Display
@@ -55,4 +65,3 @@ Methods:
 ### 5. DisplayMenu
 The `DisplayMenu` class handles user interaction through a command-line menu:
 - Allows users to create displays, assign them, compare them, and purchase displays.
-- Reads text data and performs analysis using the `TextData` class.
