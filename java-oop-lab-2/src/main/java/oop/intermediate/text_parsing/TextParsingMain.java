@@ -1,8 +1,6 @@
-package oop.intermediate;
+package oop.intermediate.text_parsing;
 
 import java.io.IOException;
-
-import oop.intermediate.text_parsing.*;
 public class TextParsingMain {
     public static void main(String[] args) throws IOException{
         // Multiple files processing

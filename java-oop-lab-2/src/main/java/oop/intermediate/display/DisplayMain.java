@@ -1,6 +1,5 @@
-package oop.intermediate;
+package oop.intermediate.display;
 
-import oop.intermediate.display.Display;
 public class DisplayMain {
     public static void main(String[] args) {
         // Instantiate 3 display objects with random attributes

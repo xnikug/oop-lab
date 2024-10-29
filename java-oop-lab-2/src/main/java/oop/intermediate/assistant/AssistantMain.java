@@ -1,6 +1,6 @@
-package oop.intermediate;
+package oop.intermediate.assistant;
 
-import oop.intermediate.assistant.Assistant;
+import oop.intermediate.display.DisplayMenu;
 
 public class AssistantMain {
     public static void main(String[] args) {

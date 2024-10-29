@@ -1,7 +1,6 @@
-package oop.intermediate;
+package oop.intermediate.display;
 import java.util.Scanner;
 import oop.intermediate.assistant.*;
-import oop.intermediate.display.*;
 
 public class DisplayMenu {
     private Assistant assistant;
