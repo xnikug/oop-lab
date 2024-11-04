@@ -10,19 +10,21 @@ public class PumpkinSpiceLatte extends Coffee {
         this.mlOfMilk = mlOfMilk;
         this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }
-
+    public PumpkinSpiceLatte() {
+    }
     public int getMlOfMilk() {
         return mlOfMilk;
     }
-
+    public void setMlOfMilk(int mlOfMilk) {
+        this.mlOfMilk = mlOfMilk;
+    }
     public int getMgOfPumpkinSpice() {
         return mgOfPumpkinSpice;
     }
-
-    @Override
-    public String getName() {
-        return name;
+    public void setMgOfPumpkinSpice(int mgOfPumpkinSpice) {
+        this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }
+
 
     @Override
     public void printDetails() {
@@ -30,5 +32,16 @@ public class PumpkinSpiceLatte extends Coffee {
         super.printDetails();
         System.out.println(name + " milk: " + mlOfMilk + " mg");
         System.out.println(name + " pumpkin spice: " + mgOfPumpkinSpice + " mg");
+    }
+
+    public static PumpkinSpiceLatte makePumpkinSpiceLatte(Intensity intensity, int mlOfMilk, int mgOfPumpkinSpice) {
+        PumpkinSpiceLatte latte = new PumpkinSpiceLatte();
+        latte.prepareCoffee(intensity);
+        latte.setMlOfMilk(mlOfMilk);
+        latte.setMgOfPumpkinSpice(mgOfPumpkinSpice);
+        System.out.println("Adding " + mlOfMilk + " mg of milk");
+        System.out.println("Adding " + mgOfPumpkinSpice + " mg of pumpkin spice");
+        System.out.println("Pumpkin Spice Latte is ready!");
+        return latte;
     }
 }
