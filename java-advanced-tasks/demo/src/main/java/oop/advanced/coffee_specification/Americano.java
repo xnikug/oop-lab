@@ -9,7 +9,7 @@ public class Americano extends Coffee {
         this.mlOfWater = mlOfWater;
     }
     public Americano() {
-        
+
     }
     public int getMlOfWater() {
         return mlOfWater;
@@ -24,7 +24,7 @@ public class Americano extends Coffee {
         super.printDetails();
         System.out.println(name + " water: " + mlOfWater + " ml");
     }
-    public static Americano makAmericano(Intensity intensity, int mlOfWater) {
+    public static Americano makeAmericano(Intensity intensity, int mlOfWater) {
         Americano americano = new Americano();
         americano.prepareCoffee(intensity);
         americano.setMlOfWater(mlOfWater);
