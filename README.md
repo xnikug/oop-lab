@@ -1,4 +1,4 @@
-# Laboratory #4
+# Laboratory #2
 
 This lab focuses on applying object-oriented programming (OOP) principles to create a coffee ordering system using Java. The program utilizes enums and classes to simulate a barista taking various coffee orders with specific attributes and intensity levels.
 
