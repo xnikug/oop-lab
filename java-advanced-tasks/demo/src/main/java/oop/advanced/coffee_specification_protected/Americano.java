@@ -1,4 +1,4 @@
-package oop.advanced.coffee_specification;
+package oop.advanced.coffee_specification_protected;
 
 import oop.advanced.coffe_enums.Intensity;
 
@@ -6,12 +6,12 @@ public class Americano extends Coffee {
     private int mlOfWater;
     protected final String name = "Americano";
 
-    public Americano(Intensity intensityOfCoffee, int mlOfWater) {
+    protected Americano(Intensity intensityOfCoffee, int mlOfWater) {
         super(intensityOfCoffee);
         this.mlOfWater = mlOfWater;
     }
 
-    public Americano() {
+    protected Americano() {
 
     }
 

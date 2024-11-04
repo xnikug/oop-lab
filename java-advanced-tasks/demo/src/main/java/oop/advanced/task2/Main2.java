@@ -1,11 +1,11 @@
 package oop.advanced.task2;
 
+import oop.advanced.coffe_enums.Intensity;
+import oop.advanced.coffe_enums.SyrupType;
 import oop.advanced.coffee_specification.Americano;
 import oop.advanced.coffee_specification.Cappuccino;
 import oop.advanced.coffee_specification.PumpkinSpiceLatte;
 import oop.advanced.coffee_specification.SyrupCappuccino;
-import oop.advanced.coffee_specification.Intensity;
-import oop.advanced.coffee_specification.SyrupType;
 
 public class Main2 {
     public static void main(String[] args) {

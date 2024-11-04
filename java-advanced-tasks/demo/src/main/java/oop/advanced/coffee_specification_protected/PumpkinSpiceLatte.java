@@ -1,4 +1,4 @@
-package oop.advanced.coffee_specification;
+package oop.advanced.coffee_specification_protected;
 
 import oop.advanced.coffe_enums.Intensity;
 
@@ -7,23 +7,27 @@ public class PumpkinSpiceLatte extends Coffee {
     private int mgOfPumpkinSpice;
     protected final String name = "PumpkinSpiceLatte";
 
-    public PumpkinSpiceLatte(Intensity intensityOfCoffee, int mlOfMilk, int mgOfPumpkinSpice) {
+    protected PumpkinSpiceLatte(Intensity intensityOfCoffee, int mlOfMilk, int mgOfPumpkinSpice) {
         super(intensityOfCoffee);
         this.mlOfMilk = mlOfMilk;
         this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }
-    public PumpkinSpiceLatte() {
+
+    protected PumpkinSpiceLatte() {
 
     }
     public int getMlOfMilk() {
         return mlOfMilk;
     }
+
     protected void setMlOfMilk(int mlOfMilk) {
         this.mlOfMilk = mlOfMilk;
     }
+
     public int getMgOfPumpkinSpice() {
         return mgOfPumpkinSpice;
     }
+    
     protected void setMgOfPumpkinSpice(int mgOfPumpkinSpice) {
         this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }

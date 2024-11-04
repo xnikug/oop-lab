@@ -2,13 +2,13 @@ package oop.advanced.barista;
 import java.util.ArrayList;
 import java.util.List;
 
-import oop.advanced.coffee_specification.Americano;
-import oop.advanced.coffee_specification.Cappuccino;
-import oop.advanced.coffee_specification.Coffee;
-import oop.advanced.coffee_specification.Intensity;
-import oop.advanced.coffee_specification.PumpkinSpiceLatte;
-import oop.advanced.coffee_specification.SyrupCappuccino;
-import oop.advanced.coffee_specification.SyrupType;
+import oop.advanced.coffe_enums.Intensity;
+import oop.advanced.coffe_enums.SyrupType;
+import oop.advanced.coffee_specification_protected.Americano;
+import oop.advanced.coffee_specification_protected.Cappuccino;
+import oop.advanced.coffee_specification_protected.Coffee;
+import oop.advanced.coffee_specification_protected.PumpkinSpiceLatte;
+import oop.advanced.coffee_specification_protected.SyrupCappuccino;
 /*The 'Barista' class supports methods of ordering only for the children of the parent class 'Coffee'  */
 public class Barista {
     private List<Coffee> orders = new ArrayList<>();
@@ -39,6 +39,7 @@ public class Barista {
     public void showAllOrders() {
         System.out.println("All Coffee Orders:");
         for (Coffee coffee : orders) {
+            System.out.println("-------------------------");
             coffee.printDetails();
         }
     }

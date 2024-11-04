@@ -1,4 +1,4 @@
-package oop.advanced.coffee_specification;
+package oop.advanced.coffee_specification_protected;
 
 import oop.advanced.coffe_enums.Intensity;
 
@@ -6,11 +6,11 @@ public class Coffee {
     protected Intensity intensityOfCoffee;
     protected final String name = "Coffee";
 
-    public Coffee(Intensity intensityOfCoffee) {
+    protected Coffee(Intensity intensityOfCoffee) {
         this.intensityOfCoffee = intensityOfCoffee;
     }
-    
-    public Coffee(){
+
+    protected Coffee(){
         
     }
 

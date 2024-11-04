@@ -1,4 +1,4 @@
-package oop.advanced.coffee_specification;
+package oop.advanced.coffee_specification_protected;
 
 import oop.advanced.coffe_enums.Intensity;
 import oop.advanced.coffe_enums.SyrupType;
@@ -8,20 +8,19 @@ public class SyrupCappuccino extends Coffee {
     private SyrupType syrupType;
     protected final String name = "SyrupCappuccino";
 
-    public SyrupCappuccino(Intensity intensityOfCoffee, int mlOfMilk, SyrupType syrupType) {
+    protected SyrupCappuccino(Intensity intensityOfCoffee, int mlOfMilk, SyrupType syrupType) {
         super(intensityOfCoffee);
         this.mlOfMilk = mlOfMilk;
         this.syrupType = syrupType;
     }
 
-    public SyrupCappuccino() {
+    protected SyrupCappuccino() {
 
     }
 
     public int getMlOfMilk() {
         return mlOfMilk;
     }
-
     protected void setMlOfMilk(int mlOfMilk) {
         this.mlOfMilk = mlOfMilk;
     }
@@ -30,7 +29,6 @@ public class SyrupCappuccino extends Coffee {
     public SyrupType getSyrupType() {
         return syrupType;
     }
-
     protected void setSyrupType(SyrupType syrupType) {
         this.syrupType = syrupType;
     }

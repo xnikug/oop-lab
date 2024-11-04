@@ -1,4 +1,4 @@
-package oop.advanced.coffee_specification;
+package oop.advanced.coffee_specification_protected;
 
 import oop.advanced.coffe_enums.Intensity;
 
@@ -6,12 +6,12 @@ public class Cappuccino extends Coffee {
     private int mlOfMilk;
     protected final String name = "Cappuccino";
 
-    public Cappuccino(Intensity intensityOfCoffee, int mlOfMilk) {
+    protected Cappuccino(Intensity intensityOfCoffee, int mlOfMilk) {
         super(intensityOfCoffee);
         this.mlOfMilk = mlOfMilk;
     }
-    
-    public Cappuccino(){
+
+    protected Cappuccino(){
         
     }
 
@@ -22,7 +22,6 @@ public class Cappuccino extends Coffee {
     protected void setMlOfMilk(int mlOfMilk) {
         this.mlOfMilk = mlOfMilk;
     }
-
     @Override
     public void printDetails() {
         // Reuse from Coffee
