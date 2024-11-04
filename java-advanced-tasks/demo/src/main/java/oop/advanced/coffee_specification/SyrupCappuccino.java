@@ -23,5 +23,13 @@ public class SyrupCappuccino extends Coffee {
     public String getName() {
         return name;
     }
+
+    @Override
+    public void printDetails() {
+        // Reuse from Coffee
+        super.printDetails();
+        System.out.println(name + " milk: " + mlOfMilk + " mg");
+        System.out.println(name + " syrup type: " + syrupType);
+    }
 }
 

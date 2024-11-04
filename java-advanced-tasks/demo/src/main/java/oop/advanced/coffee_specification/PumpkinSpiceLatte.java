@@ -23,4 +23,12 @@ public class PumpkinSpiceLatte extends Coffee {
     public String getName() {
         return name;
     }
+
+    @Override
+    public void printDetails() {
+        // Reuse from Coffee
+        super.printDetails();
+        System.out.println(name + " milk: " + mlOfMilk + " mg");
+        System.out.println(name + " pumpkin spice: " + mgOfPumpkinSpice + " mg");
+    }
 }

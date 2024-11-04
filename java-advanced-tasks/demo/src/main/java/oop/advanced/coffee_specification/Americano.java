@@ -17,5 +17,11 @@ public class Americano extends Coffee {
     public String getName() {
         return name;
     }
+    @Override
+    public void printDetails() {
+        // Reuse from Coffee
+        super.printDetails();
+        System.out.println(name + " water: " + mlOfWater + " ml");
+    }
 }
 

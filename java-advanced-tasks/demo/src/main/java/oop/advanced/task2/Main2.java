@@ -6,6 +6,7 @@ import oop.advanced.coffee_specification.PumpkinSpiceLatte;
 import oop.advanced.coffee_specification.SyrupCappuccino;
 import oop.advanced.coffee_specification.Intensity;
 import oop.advanced.coffee_specification.SyrupType;
+
 public class Main2 {
     public static void main(String[] args) {
         Cappuccino cappuccino = new Cappuccino(Intensity.NORMAL, 50);
