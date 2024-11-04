@@ -14,7 +14,7 @@ public class Americano extends Coffee {
     public int getMlOfWater() {
         return mlOfWater;
     }
-    public void setMlOfWater(int mlOfWater) {
+    protected void setMlOfWater(int mlOfWater) {
         this.mlOfWater = mlOfWater;
     }
 

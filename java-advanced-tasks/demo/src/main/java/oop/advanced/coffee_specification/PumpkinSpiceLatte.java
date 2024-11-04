@@ -11,17 +11,18 @@ public class PumpkinSpiceLatte extends Coffee {
         this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }
     public PumpkinSpiceLatte() {
+        
     }
     public int getMlOfMilk() {
         return mlOfMilk;
     }
-    public void setMlOfMilk(int mlOfMilk) {
+    protected void setMlOfMilk(int mlOfMilk) {
         this.mlOfMilk = mlOfMilk;
     }
     public int getMgOfPumpkinSpice() {
         return mgOfPumpkinSpice;
     }
-    public void setMgOfPumpkinSpice(int mgOfPumpkinSpice) {
+    protected void setMgOfPumpkinSpice(int mgOfPumpkinSpice) {
         this.mgOfPumpkinSpice = mgOfPumpkinSpice;
     }
 

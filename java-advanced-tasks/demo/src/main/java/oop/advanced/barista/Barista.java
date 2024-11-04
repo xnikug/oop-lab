@@ -9,7 +9,7 @@ import oop.advanced.coffee_specification.Intensity;
 import oop.advanced.coffee_specification.PumpkinSpiceLatte;
 import oop.advanced.coffee_specification.SyrupCappuccino;
 import oop.advanced.coffee_specification.SyrupType;
-
+/*The 'Barista' class supports methods of ordering only for the children of the parent class 'Coffee'  */
 public class Barista {
     private List<Coffee> orders = new ArrayList<>();
 

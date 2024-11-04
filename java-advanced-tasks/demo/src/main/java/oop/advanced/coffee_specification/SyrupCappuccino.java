@@ -16,7 +16,7 @@ public class SyrupCappuccino extends Coffee {
     public int getMlOfMilk() {
         return mlOfMilk;
     }
-    public void setMlOfMilk(int mlOfMilk) {
+    protected void setMlOfMilk(int mlOfMilk) {
         this.mlOfMilk = mlOfMilk;
     }
 
@@ -24,7 +24,7 @@ public class SyrupCappuccino extends Coffee {
     public SyrupType getSyrupType() {
         return syrupType;
     }
-    public void setSyrupType(SyrupType syrupType) {
+    protected void setSyrupType(SyrupType syrupType) {
         this.syrupType = syrupType;
     }
 

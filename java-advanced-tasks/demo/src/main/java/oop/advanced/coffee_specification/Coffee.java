@@ -15,7 +15,7 @@ public class Coffee {
     public Intensity getIntensityOfCoffee() {
         return intensityOfCoffee;
     }
-    public void setIntensityOfCoffee(Intensity intensityOfCoffee) {
+    protected void setIntensityOfCoffee(Intensity intensityOfCoffee) {
         this.intensityOfCoffee = intensityOfCoffee;
     }
 
