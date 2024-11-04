@@ -1,5 +1,5 @@
 package oop.advanced.coffee_specification;
 
-enum Intensity {
+public enum Intensity {
     LIGHT, NORMAL, STRONG
 }
