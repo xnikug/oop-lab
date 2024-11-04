@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class Main4 {
     public static void printMenu(){
-        System.out.println("Welcome to the Coffee Shop!");
         System.out.println("Please choose an option:");
         System.out.println("1. Order Cappuccino");
         System.out.println("2. Order Americano");
@@ -24,7 +23,7 @@ public class Main4 {
         Intensity intensity;
         SyrupType syrupType;
         boolean running = true;
-
+        System.out.println("Welcome to the Coffee Shop!");
         while (running) {
             printMenu();
             int choice = scanner.nextInt();
