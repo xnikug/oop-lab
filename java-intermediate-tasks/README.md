@@ -1,4 +1,4 @@
-# Laboratory #2
+# Laboratory #1
 
 This lab focuses on object-oriented programming (OOP) principles using Java. Examples include to create a display management application, and to handle text data from files.
 
