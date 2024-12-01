@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import oop.master.car_utils.Car;
 import oop.master.car_utils.CarComparator;
+import oop.master.car_utils.CarStation;
 import oop.master.enums.CarTypes;
 import oop.master.enums.PassengerTypes;
 import oop.master.queue.*;

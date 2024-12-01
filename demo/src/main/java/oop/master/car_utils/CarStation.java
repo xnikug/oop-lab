@@ -1,6 +1,5 @@
-package oop.master;
+package oop.master.car_utils;
 
-import oop.master.car_utils.Car;
 import oop.master.queue.Queue;
 import oop.master.services.Dineable;
 import oop.master.services.Refuelable;
