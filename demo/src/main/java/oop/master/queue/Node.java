@@ -1,4 +1,4 @@
-package oop.master;
+package oop.master.queue;
 
 public class Node<T> {
     public T data;

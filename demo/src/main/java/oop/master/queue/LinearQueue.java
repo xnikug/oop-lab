@@ -1,4 +1,5 @@
-package oop.master;
+package oop.master.queue;
+
 public class LinearQueue<T> implements Queue<T>{
 
     private Node<T> rear;
