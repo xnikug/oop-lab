@@ -1,4 +1,4 @@
-package oop.master;
+package oop.master.car_utils;
 
 import oop.master.enums.CarTypes;
 import oop.master.enums.PassengerTypes;

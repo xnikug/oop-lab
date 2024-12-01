@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import oop.master.car_utils.Car;
+import oop.master.car_utils.CarComparator;
 import oop.master.enums.CarTypes;
 import oop.master.enums.PassengerTypes;
 import oop.master.queue.LimitQueue;

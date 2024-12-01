@@ -1,5 +1,4 @@
-package oop.master;
-
+package oop.master.car_utils;
 
 public class CarComparator{
     public static int compareByConsumption(Car c1, Car c2) {
