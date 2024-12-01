@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import oop.master.car_utils.Car;
 import oop.master.car_utils.CarComparator;
@@ -32,7 +31,6 @@ class CarStationTest {
 
     @BeforeEach
     void setUp() {
-        // Mock Dineable and Refuelable services
         peopleDinnerService = new PeopleDinner();
         robotDinnerService = new RobotDinner();
         gasFuelService = new GasStation();

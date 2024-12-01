@@ -21,8 +21,14 @@ public class Semaphore {
         if (targetStation != null) {
             targetStation.addCar(car);
         } else {
-            throw new IllegalArgumentException("No CarStation registered for: " + car.getType() + " - " + car.getPassengers());
+            throw new IllegalArgumentException("Could not register station: Invalid car type or passagers type");
         }
+    }
+
+    public void serveCarsType(CarTypes carType, PassengerTypes passengerType) {
+        CarKey key = new CarKey(carType, passengerType);
+        CarStation station = carStationMap.get(key);
+        station.serveCars();
     }
 
     public int getCarsCountForType(CarTypes carType, PassengerTypes passengerType) {

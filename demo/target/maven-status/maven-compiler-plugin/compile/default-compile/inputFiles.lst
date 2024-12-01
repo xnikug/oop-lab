@@ -1,5 +1,6 @@
-C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\Car.java
-C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\CarComparator.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\car_utils\Car.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\car_utils\CarComparator.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\car_utils\CarKey.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\CarStation.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\enums\CarTypes.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\enums\PassengerTypes.java
@@ -9,6 +10,7 @@ C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\LinearQueue.ja
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\Node.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\PriorityQueue.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\Queue.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\Semaphore.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\Dineable.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\ElectricStation.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\GasStation.java
