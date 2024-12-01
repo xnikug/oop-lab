@@ -27,7 +27,7 @@ public class CarStation {
         this.queue = queue;
     }
 
-    public void serveCar(){
+    public void serveCars(){
         while (!queue.isEmpty()){
             Car car = queue.dequeue();
             if (car != null){

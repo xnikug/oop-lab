@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import oop.master.enums.CarTypes;
@@ -53,7 +52,7 @@ class CarStationTest {
         Car car2 = new Car(2, CarTypes.ELECTRIC, PassengerTypes.PEOPLE, false, 90); 
         carElectricPeopleStation.addCar(car1);
         carElectricPeopleStation.addCar(car2);
-        carElectricPeopleStation.serveCar();  // The car with higher consumption should be served first
+        carElectricPeopleStation.serveCars();  // The car with higher consumption should be served first
 
         assertEquals(2, carElectricPeopleStation.getFuelService().getCount());
     }
@@ -69,7 +68,7 @@ class CarStationTest {
 
         assertEquals(car2, carElectricRobotStation.getQueue().peek());
 
-        carElectricRobotStation.serveCar();  // The passagers that want to take dinner should be served first
+        carElectricRobotStation.serveCars();  // The passagers that want to take dinner should be served first
 
         assertEquals(2, carElectricRobotStation.getDinnerService().getCount());
     }
@@ -84,5 +83,18 @@ class CarStationTest {
         System.out.println(e.getMessage());
         assertEquals(2, carGasRobotStation.getQueue().size());
     }
+    @Test
+    void testLinearQueue() {
+        Car car1 = new Car(1, CarTypes.GAS, PassengerTypes.PEOPLE, false, 30);
+        Car car2 = new Car(2, CarTypes.GAS, PassengerTypes.PEOPLE, true, 48);
+        Car car3 = new Car(3, CarTypes.GAS, PassengerTypes.PEOPLE, true, 10);
+        carGasPeopleStation.addCar(car1);
+        carGasPeopleStation.addCar(car2);
+        carGasPeopleStation.addCar(car3);
+        carGasPeopleStation.serveCars();
 
+        assertEquals(2, carGasPeopleStation.getDinnerService().getCount());
+        assertEquals(3, carGasPeopleStation.getFuelService().getCount());
+
+    }
 }
