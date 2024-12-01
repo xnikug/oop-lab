@@ -10,7 +10,8 @@ public class GasStation implements Refuelable {
         System.out.println("Refueling gas car " + carId + ".");
     }
 
-    public int getGasCarCount() {
+    @Override
+    public int getCount() {
         return gasCarCount;
     }
 }

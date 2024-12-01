@@ -1,5 +1,6 @@
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\Car.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\CarComparator.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\CarStation.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\enums\CarTypes.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\enums\PassengerTypes.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\Main.java
@@ -8,3 +9,9 @@ C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\LinearQueue.ja
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\Node.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\PriorityQueue.java
 C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\queue\Queue.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\Dineable.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\ElectricStation.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\GasStation.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\PeopleDinner.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\Refuelable.java
+C:\Users\user\Desktop\oop-lab\demo\src\main\java\oop\master\services\RobotDinner.java

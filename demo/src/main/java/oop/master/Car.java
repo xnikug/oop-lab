@@ -1,17 +1,18 @@
 package oop.master;
 
 import oop.master.enums.CarTypes;
+import oop.master.enums.PassengerTypes;
 
 public class Car {
 
     private Integer id;
     private CarTypes type;
-    private String passengers;
+    private PassengerTypes passengers;
     private Boolean isDining;
     private Integer consumption;
 
     // Constructor
-    public Car(Integer id, CarTypes type, String passengers, Boolean isDining, Integer consumption) {
+    public Car(Integer id, CarTypes type, PassengerTypes passengers, Boolean isDining, Integer consumption) {
         this.id = id;
         this.type = type;
         this.passengers = passengers;
@@ -36,11 +37,11 @@ public class Car {
         this.type = type;
     }
 
-    public String getPassengers() {
+    public PassengerTypes getPassengers() {
         return passengers;
     }
 
-    public void setPassengers(String passengers) {
+    public void setPassengers(PassengerTypes passengers) {
         this.passengers = passengers;
     }
 

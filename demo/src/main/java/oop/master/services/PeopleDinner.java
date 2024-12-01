@@ -2,7 +2,7 @@ package oop.master.services;
 
 // PeopleDinner class
 public class PeopleDinner implements Dineable {
-    private int peopleCount = 0; // Static variable to track the number of people served
+    private int peopleCount = 0;
 
     @Override
     public void serveDinner(String carId) {
@@ -10,8 +10,8 @@ public class PeopleDinner implements Dineable {
         System.out.println("Serving dinner to people in car " + carId + ".");
     }
 
-    // Static method to get the count of people served
-    public int getPeopleCount() {
+    @Override
+    public int getCount() {
         return peopleCount;
     }
 }

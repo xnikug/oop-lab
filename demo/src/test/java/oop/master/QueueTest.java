@@ -91,9 +91,12 @@ class QueueTest {
     void testSizeLimitQueueBounds() {
         Queue<Integer> queue = new LimitQueue<>(1);
         queue.enqueue(10);
-        assertThrowsExactly(IllegalStateException.class, () -> queue.enqueue(200));
+        Exception e = assertThrowsExactly(IllegalStateException.class, () -> queue.enqueue(200));
+        System.out.println(e.getMessage());
         queue.dequeue();
-        assertThrowsExactly(IllegalStateException.class, () -> queue.dequeue());
+        e = assertThrowsExactly(IllegalStateException.class, () -> queue.dequeue());
+        System.out.println(e.getMessage());
+
 
     }
     @Test
@@ -107,8 +110,8 @@ class QueueTest {
         assertEquals(30, queue.dequeue());
         assertEquals(10, queue.dequeue());
         assertEquals(2, queue.dequeue());
-        assertThrowsExactly(IllegalStateException.class, () -> queue.dequeue());
-
+        Exception e = assertThrowsExactly(IllegalStateException.class, () -> queue.dequeue());
+        System.out.println(e.getMessage());
 
     }
 }

@@ -21,9 +21,10 @@ public class CarStation {
 		return this.queue;
 	}
 
-    public CarStation(Dineable dinnerService, Refuelable fuelService) {
+    public CarStation(Dineable dinnerService, Refuelable fuelService, Queue<Car> queue) {
         this.dinnerService = dinnerService;
         this.fuelService = fuelService;
+        this.queue = queue;
     }
 
     public void serveCar(){
