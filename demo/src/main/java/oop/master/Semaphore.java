@@ -105,16 +105,16 @@ public class Semaphore {
         carCounts.put("NOT_DINING", peopleCount + robotsCount - totaldinnerServedCount);
         // Print the stats in the JSON format
         System.out.print("{");
-        System.out.print("  \"ELECTRIC\": " + carCounts.get("ELECTRIC") + ",");
-        System.out.print("  \"GAS\": " + carCounts.get("GAS") + ",");
-        System.out.print("  \"PEOPLE\": " + carCounts.get("PEOPLE") + ",");
-        System.out.print("  \"ROBOTS\": " + carCounts.get("ROBOTS") + ",");
-        System.out.print("  \"DINING\": " + carCounts.get("DINING") + ",");
-        System.out.print("  \"NOT_DINING\": " + carCounts.get("NOT_DINING") + ",");
-        System.out.print("  \"CONSUMPTION\": {");
-        System.out.print("    \"ELECTRIC\": " + consumption.get("ELECTRIC") + ",");
-        System.out.print("    \"GAS\": " + consumption.get("GAS"));
-        System.out.print("  }");
+        System.out.print("\"ELECTRIC\": " + carCounts.get("ELECTRIC") + ",");
+        System.out.print(" \"GAS\": " + carCounts.get("GAS") + ",");
+        System.out.print(" \"PEOPLE\": " + carCounts.get("PEOPLE") + ",");
+        System.out.print(" \"ROBOTS\": " + carCounts.get("ROBOTS") + ",");
+        System.out.print(" \"DINING\": " + carCounts.get("DINING") + ",");
+        System.out.print(" \"NOT_DINING\": " + carCounts.get("NOT_DINING") + ",");
+        System.out.print(" \"CONSUMPTION\": {");
+        System.out.print("\"ELECTRIC\": " + consumption.get("ELECTRIC") + ",");
+        System.out.print(" \"GAS\": " + consumption.get("GAS"));
+        System.out.print("}");
         System.out.print("}");
         System.out.println();
     }

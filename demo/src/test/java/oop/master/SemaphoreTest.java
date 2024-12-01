@@ -1,5 +1,11 @@
 package oop.master;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -8,13 +14,15 @@ import oop.master.car_utils.CarComparator;
 import oop.master.car_utils.CarStation;
 import oop.master.enums.CarTypes;
 import oop.master.enums.PassengerTypes;
-import oop.master.queue.*;
-import oop.master.services.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import oop.master.queue.LimitQueue;
+import oop.master.queue.LinearQueue;
+import oop.master.queue.PriorityQueue;
+import oop.master.services.Dineable;
+import oop.master.services.ElectricStation;
+import oop.master.services.GasStation;
+import oop.master.services.PeopleDinner;
+import oop.master.services.Refuelable;
+import oop.master.services.RobotDinner;
 
 public class SemaphoreTest {
 
@@ -122,6 +130,7 @@ public class SemaphoreTest {
         semaphore.guideCar(car1);
         semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
         assertEquals(1, semaphore.getDinnerServedCountForType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS));
+        semaphore.printStatus();
         String jsonCar2 = """
         {
           "id": 2,

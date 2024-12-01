@@ -26,8 +26,9 @@ public class Main {
     private static final Path QUEUE_DIR = Paths.get("src/main/resources/queue");
     private static final Path PENDING_DIR = Paths.get("src/main/resources/pending");
     private static final ExecutorService executorService = Executors.newCachedThreadPool();
+    private static Semaphore semaphore;
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore();
+        semaphore = new Semaphore();
         Scheduler scheduler = new Scheduler(semaphore);
 
         Dineable peopleDinnerService = new PeopleDinner();
@@ -53,7 +54,35 @@ public class Main {
         scheduler.startServeCarProcess(4, CarTypes.ELECTRIC, PassengerTypes.PEOPLE);
         scheduler.startServeCarProcess(4, CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
         scheduler.startPrintStatsProcess(5);
-        //onitorDirectories();
+        monitorDirectories();
+
+    }
+    private static void monitorDirectories() {
+        executorService.submit(() -> {
+            while (true) {
+                try {
+                    if (isDirectoryEmpty(QUEUE_DIR) && isDirectoryEmpty(PENDING_DIR)) {
+                        // One final call
+                        semaphore.printStatus();
+                        System.out.println("Both queue and pending folders are empty. Stopping the program...");
+                        executorService.shutdownNow(); // Stop all ongoing processes
+                        System.exit(0);  // Stop the program
+                    }
+                    Thread.sleep(1000); // Check every second
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+    }
+    private static boolean isDirectoryEmpty(Path directory) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
+            return !stream.iterator().hasNext();
+        } catch (IOException e) {
+            System.err.println("Error checking directory: " + directory + " - " + e.getMessage());
+            return false;
+        }
     }
 }
 
