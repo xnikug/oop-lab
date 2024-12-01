@@ -48,8 +48,8 @@ class CarStationTest {
     @Test
     void testPriorityQueueFuelServing() {
         // Add cars to the priority queue station by Fuel
-        Car car1 = new Car(1, CarTypes.ELECTRIC, PassengerTypes.PEOPLE, true, 80); 
-        Car car2 = new Car(2, CarTypes.ELECTRIC, PassengerTypes.PEOPLE, false, 90); 
+        Car car1 = new Car(1, CarTypes.ELECTRIC, PassengerTypes.PEOPLE, true, 40); 
+        Car car2 = new Car(2, CarTypes.ELECTRIC, PassengerTypes.PEOPLE, false, 50); 
         carElectricPeopleStation.addCar(car1);
         carElectricPeopleStation.addCar(car2);
         carElectricPeopleStation.serveCars();  // The car with higher consumption should be served first
@@ -59,9 +59,9 @@ class CarStationTest {
     @Test
     void testPriorityQueueDinningServing() {
         // Add cars to the priority queue station by Dinning
-        Car car1 = new Car(1, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, false, 70);
-        Car car2 = new Car(2, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, true, 4);
-        Car car3 = new Car(3, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, true, 10);
+        Car car1 = new Car(1, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, false, 50);
+        Car car2 = new Car(2, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, true, 10);
+        Car car3 = new Car(3, CarTypes.ELECTRIC, PassengerTypes.ROBOTS, true, 12);
         carElectricRobotStation.addCar(car1);
         carElectricRobotStation.addCar(car2);
         carElectricRobotStation.addCar(car3);
@@ -74,9 +74,9 @@ class CarStationTest {
     }
     @Test
     void testLimitQueueCapacity() {
-        Car car1 = new Car(1, CarTypes.GAS, PassengerTypes.ROBOTS, false, 70);
-        Car car2 = new Car(2, CarTypes.GAS, PassengerTypes.ROBOTS, true, 4);
-        Car car3 = new Car(3, CarTypes.GAS, PassengerTypes.ROBOTS, true, 10);
+        Car car1 = new Car(1, CarTypes.GAS, PassengerTypes.ROBOTS, false, 50);
+        Car car2 = new Car(2, CarTypes.GAS, PassengerTypes.ROBOTS, true, 12);
+        Car car3 = new Car(3, CarTypes.GAS, PassengerTypes.ROBOTS, true, 13);
         carGasRobotStation.addCar(car1);
         carGasRobotStation.addCar(car2);
         Exception e = assertThrows(IllegalStateException.class, () -> carGasRobotStation.addCar(car3));

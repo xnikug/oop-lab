@@ -2,11 +2,14 @@ package oop.master;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import oop.master.car_utils.Car;
+import oop.master.car_utils.CarComparator;
 import oop.master.enums.CarTypes;
 import oop.master.enums.PassengerTypes;
 import oop.master.queue.*;
 import oop.master.services.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +33,10 @@ public class SemaphoreTest {
         // Register CarStations
         semaphore.registerStation(CarTypes.GAS, PassengerTypes.PEOPLE, 
             new CarStation(peopleDinnerService, gasFuelService, new LinearQueue<>()));
+        semaphore.registerStation(CarTypes.GAS, PassengerTypes.ROBOTS, 
+            new CarStation(robotDinnerService, gasFuelService, new LimitQueue<>(3)));
         semaphore.registerStation(CarTypes.ELECTRIC, PassengerTypes.ROBOTS, 
-            new CarStation(robotDinnerService, electricFuelService, new LimitQueue<>(3)));
+            new CarStation(peopleDinnerService, electricFuelService, new PriorityQueue<>(CarComparator::compareByConsumption)));
     }
 
     @Test
@@ -89,6 +94,14 @@ public class SemaphoreTest {
         Exception e = assertThrows(IllegalArgumentException.class, () -> {
             Car car = gson.fromJson(invalidJsonCar, Car.class);
             semaphore.guideCar(car);
+        });
+        System.out.println(e.getMessage());
+    }
+    @Test
+    void testUnregisteredThrowsException() {
+
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
+            semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.PEOPLE);
         });
         System.out.println(e.getMessage());
     }

@@ -34,7 +34,7 @@ class QueueTest {
     void testIsEmptyLinearQueue() {
         Queue<Integer> queue = new LinearQueue<>();
         assertTrue(queue.isEmpty());
-        queue.enqueue(5);
+        queue.enqueue(50);
         assertFalse(queue.isEmpty());
     }
 
@@ -81,7 +81,7 @@ class QueueTest {
         queue.enqueue(10);
         queue.enqueue(20);
         assertEquals(2, queue.size());
-        queue.enqueue(100);
+        queue.enqueue(50);
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
@@ -102,14 +102,14 @@ class QueueTest {
     @Test
     void testPriorityQueueOrder() {
         Queue<Integer> queue = new PriorityQueue<>(Integer::compare);
-        queue.enqueue(10);
+        queue.enqueue(12);
         queue.enqueue(30);
-        queue.enqueue(2);
-        queue.enqueue(100);
-        assertEquals(100, queue.dequeue());
+        queue.enqueue(10);
+        queue.enqueue(50);
+        assertEquals(50, queue.dequeue());
         assertEquals(30, queue.dequeue());
+        assertEquals(12, queue.dequeue());
         assertEquals(10, queue.dequeue());
-        assertEquals(2, queue.dequeue());
         Exception e = assertThrowsExactly(IllegalStateException.class, () -> queue.dequeue());
         System.out.println(e.getMessage());
 

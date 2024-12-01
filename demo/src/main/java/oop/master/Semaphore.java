@@ -21,13 +21,16 @@ public class Semaphore {
         if (targetStation != null) {
             targetStation.addCar(car);
         } else {
-            throw new IllegalArgumentException("Could not register station: Invalid car type or passagers type");
+            throw new IllegalArgumentException("Target station was not found");
         }
     }
 
     public void serveCarsType(CarTypes carType, PassengerTypes passengerType) {
         CarKey key = new CarKey(carType, passengerType);
         CarStation station = carStationMap.get(key);
+        if (station == null){
+            throw new IllegalArgumentException("Station not found for car type");
+        }
         station.serveCars();
     }
 
