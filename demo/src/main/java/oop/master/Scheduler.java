@@ -5,7 +5,6 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -35,6 +34,7 @@ public class Scheduler {
                 while (!Thread.currentThread().isInterrupted()) {
                     // Serve cars for the specific car type and passenger type
                     semaphore.serveCarsType(carType, passengerType);
+                    System.out.println();
                     Thread.sleep(serveCarInterval * 1000); // Sleep for the specified interval
                 }
             } catch (InterruptedException e) {
@@ -42,9 +42,10 @@ public class Scheduler {
             }
         });
     }
-    private static List<Car> readCarsFromQueueFolder() {
-        List<Car> cars = new ArrayList<>();
+    private static Car readCarFromQueueFolder() {
+        Car car = null;
         Path queueDir = Paths.get("src/main/resources/queue");
+        Path servedDir = Paths.get("src/main/resources/served"); // Directory to move served files
     
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(queueDir, "*.json")) {
             // Collect paths into a list
@@ -52,54 +53,58 @@ public class Scheduler {
             for (Path entry : stream) {
                 carFiles.add(entry);
             }
+            
+            // Sort files based on the number after "Car" in the filename
             carFiles.sort(new Comparator<Path>() {
                 @Override
                 public int compare(Path c1, Path c2) {
                     // Regular expression to match the number after "Car"
                     String regex = "Car(\\d+)";
-                    
+    
                     // Extract numbers from the filenames
                     int number1 = extractNumber(c1.getFileName().toString(), regex);
                     int number2 = extractNumber(c2.getFileName().toString(), regex);
-                    
+    
                     // Compare the extracted numbers
                     return Integer.compare(number1, number2);
                 }
+    
                 private int extractNumber(String filename, String regex) {
                     java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
                     java.util.regex.Matcher matcher = pattern.matcher(filename);
-                    
+    
                     if (matcher.find()) {
                         return Integer.parseInt(matcher.group(1));
                     }
                     return Integer.MAX_VALUE;
                 }
             });
-            
-            // Now read the files in the sorted order
-            for (Path entry : carFiles) {
-                // Read the car file
-                String json = new String(Files.readAllBytes(entry));
-                System.out.println("Reading car: " + entry.getFileName());
-                Car car = new Gson().fromJson(json, Car.class);
-                cars.add(car);
-            }
+
+            // Now read the first car in the sorted order and move it to the pending directory
+            Path entry = carFiles.get(0); 
+            // Read the car file
+            String json = new String(Files.readAllBytes(entry));
+            System.out.println("Reading car: " + entry.getFileName());
+            car = new Gson().fromJson(json, Car.class);
+
+            // Move the car file to the pending directory
+            FileMover.moveCarFile(car.getId().toString(), "src/main/resources/queue", "src/main/resources/pending");
         } catch (IOException e) {
             e.printStackTrace();
         }
     
-        return cars;
+        return car;
     }
     
     public void startGuideCarProcess(long guideCarInterval) {
         executorService.submit(() -> {
             try {
-                List<Car> carsToGuide = readCarsFromQueueFolder();
                 while (!Thread.currentThread().isInterrupted()) {
-                    for (Car car :  carsToGuide){
+                    Car car = readCarFromQueueFolder();
+                    if (car != null){
                         semaphore.guideCar(car);
-                        Thread.sleep(guideCarInterval * 1000); // Sleep for the specified interval
                     }
+                    Thread.sleep(guideCarInterval * 1000); // Sleep for the specified interval
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();

@@ -1,5 +1,6 @@
 package oop.master.car_utils;
 
+import oop.master.FileMover;
 import oop.master.queue.Queue;
 import oop.master.services.Dineable;
 import oop.master.services.Refuelable;
@@ -37,9 +38,12 @@ public class CarStation {
                 }
 
                 fuelService.refuel(car.getId().toString());
+                FileMover.moveCarFile(car.getId().toString(), "src/main/resources/pending", "src/main/resources/served");
             }
         }
     }
+    
+
     public void addCar(Car car){
         queue.enqueue(car);
     }
