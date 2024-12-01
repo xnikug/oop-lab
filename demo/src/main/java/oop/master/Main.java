@@ -1,6 +1,12 @@
 package oop.master;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import oop.master.car_utils.CarComparator;
 import oop.master.car_utils.CarStation;
@@ -17,11 +23,12 @@ import oop.master.services.Refuelable;
 import oop.master.services.RobotDinner;
 
 public class Main {
-
+    private static final Path QUEUE_DIR = Paths.get("src/main/resources/queue");
+    private static final Path PENDING_DIR = Paths.get("src/main/resources/pending");
+    private static final ExecutorService executorService = Executors.newCachedThreadPool();
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore();
         Scheduler scheduler = new Scheduler(semaphore);
-        Gson gson = new GsonBuilder().create();
 
         Dineable peopleDinnerService = new PeopleDinner();
         Dineable robotDinnerService = new RobotDinner();
@@ -41,10 +48,12 @@ public class Main {
         
         // Start the guide car and serve car processes
         scheduler.startGuideCarProcess(2);
-        scheduler.startServeCarProcess(2, CarTypes.GAS, PassengerTypes.PEOPLE);
-        scheduler.startServeCarProcess(2, CarTypes.GAS, PassengerTypes.ROBOTS); 
-        scheduler.startServeCarProcess(2, CarTypes.ELECTRIC, PassengerTypes.PEOPLE);
-        scheduler.startServeCarProcess(2, CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
+        scheduler.startServeCarProcess(4, CarTypes.GAS, PassengerTypes.PEOPLE);
+        scheduler.startServeCarProcess(4, CarTypes.GAS, PassengerTypes.ROBOTS); 
+        scheduler.startServeCarProcess(4, CarTypes.ELECTRIC, PassengerTypes.PEOPLE);
+        scheduler.startServeCarProcess(4, CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
+        scheduler.startPrintStatsProcess(5);
+        //onitorDirectories();
     }
 }
 

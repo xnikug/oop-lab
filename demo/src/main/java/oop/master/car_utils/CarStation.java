@@ -9,6 +9,22 @@ public class CarStation {
     private Dineable dinnerService;
     private Refuelable fuelService;
     private Queue<Car> queue;
+    private int totalConsumption = 0;
+    private int totalPassengersServed = 0;
+    private int totalCarsServed = 0;
+    private int totalDinnersServed = 0;
+    public int getTotalDinnersServed() {
+		return this.totalDinnersServed;
+	}
+    public int getTotalCarsServed() {
+		return this.totalCarsServed;
+	}
+	public int getTotalPassengersServed() {
+		return this.totalPassengersServed;
+	}
+	public int getTotalConsumption() {
+		return this.totalConsumption;
+	}
 
 	public Dineable getDinnerService() {
 		return this.dinnerService;
@@ -35,8 +51,11 @@ public class CarStation {
 
                 if (car.isDining()){
                     dinnerService.serveDinner(car.getId().toString());
+                    totalDinnersServed++;
                 }
-
+                totalCarsServed++;
+                totalPassengersServed++;
+                totalConsumption = totalConsumption + car.getConsumption();
                 fuelService.refuel(car.getId().toString());
                 FileMover.moveCarFile(car.getId().toString(), "src/main/resources/pending", "src/main/resources/served");
             }

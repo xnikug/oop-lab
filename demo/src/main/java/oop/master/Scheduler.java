@@ -33,9 +33,22 @@ public class Scheduler {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
                     // Serve cars for the specific car type and passenger type
+                    Thread.sleep(serveCarInterval * 1000); // Sleep for the specified interval
                     semaphore.serveCarsType(carType, passengerType);
                     System.out.println();
-                    Thread.sleep(serveCarInterval * 1000); // Sleep for the specified interval
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+    }
+    public void startPrintStatsProcess(long printStatusInterval) {
+        executorService.submit(() -> {
+            try {
+                while (!Thread.currentThread().isInterrupted()) {
+                    // Serve cars for the specific car type and passenger type
+                    Thread.sleep(printStatusInterval * 1000); // Sleep for the specified interval
+                    semaphore.printStatus();
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -44,9 +57,7 @@ public class Scheduler {
     }
     private static Car readCarFromQueueFolder() {
         Car car = null;
-        Path queueDir = Paths.get("src/main/resources/queue");
-        Path servedDir = Paths.get("src/main/resources/served"); // Directory to move served files
-    
+        Path queueDir = Paths.get("src/main/resources/queue");    
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(queueDir, "*.json")) {
             // Collect paths into a list
             List<Path> carFiles = new ArrayList<>();
@@ -100,11 +111,11 @@ public class Scheduler {
         executorService.submit(() -> {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
+                    Thread.sleep(guideCarInterval * 1000); // Sleep for the specified interval
                     Car car = readCarFromQueueFolder();
                     if (car != null){
                         semaphore.guideCar(car);
                     }
-                    Thread.sleep(guideCarInterval * 1000); // Sleep for the specified interval
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();

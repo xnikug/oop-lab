@@ -1,1 +1,1 @@
-{"id": 20, "type": "GAS", "passengers": "ROBOTS", "isDining": false, "consumption": 19}
+{"id": 20, "type": "ELECTRIC", "passengers": "ROBOTS", "isDining": true, "consumption": 40}

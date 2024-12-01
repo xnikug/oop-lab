@@ -54,8 +54,8 @@ public class SemaphoreTest {
 
         Car electricCar = gson.fromJson(jsonCar, Car.class);
         semaphore.guideCar(electricCar);
-
-        assertEquals(1, semaphore.getCarsCountForType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS));
+        semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
+        assertEquals(1, semaphore.getDinnerServedCountForType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS));
         assertTrue(electricCar.isDining());
     }
 
@@ -105,6 +105,46 @@ public class SemaphoreTest {
             semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.PEOPLE);
         });
         System.out.println(e.getMessage());
+    }
+    @Test
+    void testStats() {
+        String jsonCar1 = """
+            {
+              "id": 1,
+              "type": "ELECTRIC",
+              "passengers": "ROBOTS",
+              "isDining": true,
+              "consumption": 30
+            }
+            """;
+            Car car1 = gson.fromJson(jsonCar1, Car.class);
+
+        semaphore.guideCar(car1);
+        semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
+        assertEquals(1, semaphore.getDinnerServedCountForType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS));
+        String jsonCar2 = """
+        {
+          "id": 2,
+          "type": "ELECTRIC",
+          "passengers": "ROBOTS",
+          "isDining": true,
+          "consumption": 40
+        }
+        """;
+        
+        Car car2 = gson.fromJson(jsonCar2, Car.class);
+
+        semaphore.guideCar(car2);
+
+        semaphore.serveCarsType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS);
+
+    }
+    @Test
+    void testDinning() {
+        assertEquals(0, semaphore.getDinnerServedCountForType(CarTypes.GAS, PassengerTypes.PEOPLE));
+        assertEquals(0, semaphore.getDinnerServedCountForType(CarTypes.ELECTRIC, PassengerTypes.PEOPLE));
+        assertEquals(0, semaphore.getDinnerServedCountForType(CarTypes.ELECTRIC, PassengerTypes.ROBOTS));
+
     }
 }
 
